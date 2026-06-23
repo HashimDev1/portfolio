@@ -16,42 +16,58 @@ const Projects = () => {
         </div>
 
         <div className="mt-14 grid gap-7 md:grid-cols-2">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 45 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.08 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10 }}
-              className="group rounded-3xl border border-[#D4AF37]/25 bg-[#3B2416] p-8 shadow-2xl transition hover:border-[#D4AF37]"
-            >
-              <div className="mb-6 flex items-center justify-between">
-                <h3 className="text-2xl font-black text-[#D4AF37]">
-                  {project.title}
-                </h3>
+          {projects.map((project, index) => {
+            const CardComponent = project.link ? motion.a : motion.div;
+            const extraProps = project.link
+              ? {
+                  href: project.link,
+                  target: "_blank",
+                  rel: "noreferrer",
+                  className: "group rounded-3xl border border-[#D4AF37]/25 bg-[#3B2416] p-8 shadow-2xl transition hover:border-[#D4AF37] block cursor-pointer",
+                }
+              : {
+                  className: "group rounded-3xl border border-[#D4AF37]/25 bg-[#3B2416] p-8 shadow-2xl transition hover:border-[#D4AF37]",
+                };
 
-                <span className="rounded-full bg-[#D4AF37] p-3 text-[#1F120B] transition group-hover:rotate-45">
-                  <ArrowUpRight size={20} />
-                </span>
-              </div>
+            return (
+              <CardComponent
+                key={project.title}
+                initial={{ opacity: 0, y: 45 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.08 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10 }}
+                {...extraProps}
+              >
+                <div className="mb-6 flex items-center justify-between">
+                  <h3 className="text-2xl font-black text-[#D4AF37]">
+                    {project.title}
+                  </h3>
 
-              <p className="leading-7 text-[#FFF8E7]/75">
-                {project.description}
-              </p>
+                  {project.link && (
+                    <span className="rounded-full bg-[#D4AF37] p-3 text-[#1F120B] transition group-hover:rotate-45">
+                      <ArrowUpRight size={20} />
+                    </span>
+                  )}
+                </div>
 
-              <div className="mt-6 flex flex-wrap gap-3">
-                {project.tech.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-[#D4AF37]/30 bg-[#1F120B] px-4 py-2 text-sm text-[#E8D8B8]"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                <p className="leading-7 text-[#FFF8E7]/75">
+                  {project.description}
+                </p>
+
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {project.tech.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-[#D4AF37]/30 bg-[#1F120B] px-4 py-2 text-sm text-[#E8D8B8]"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </CardComponent>
+            );
+          })}
         </div>
       </div>
     </section>
