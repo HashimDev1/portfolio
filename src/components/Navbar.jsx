@@ -38,8 +38,15 @@ function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="#home" className="text-2xl font-black text-[#D4AF37]">
-          Hashim<span className="text-[#FFF8E7]">.</span>
+        <a href="#home" className="flex items-center gap-3 text-2xl font-black text-[#D4AF37]">
+          <img
+            src="/Hashim1.png"
+            alt="Hashim"
+            className="h-9 w-9 rounded-full border-2 border-[#D4AF37] object-cover shadow-[0_0_10px_rgba(212,175,55,0.3)]"
+          />
+          <span>
+            Hashim<span className="text-[#FFF8E7]">.</span>
+          </span>
         </a>
 
         <div className="hidden items-center gap-8 lg:flex">
