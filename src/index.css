@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background: #f7efd8;
+  color: #1f120b;
+}
+
+::selection {
+  background: #d4af37;
+  color: #1f120b;
+}
+
+.glass {
+  background: rgba(255, 248, 231, 0.75);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.gold-glow {
+  box-shadow:
+    0 0 25px rgba(212, 175, 55, 0.35),
+    0 0 60px rgba(185, 130, 58, 0.2);
+}
+
+.section-padding {
+  padding: 90px 7%;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 70px 6%;
+  }
+}
